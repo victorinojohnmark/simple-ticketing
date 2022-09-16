@@ -1,0 +1,45 @@
+[
+    {
+        "section": "Fund Management",
+        "list": [
+            "Fund Matching",
+            "Assignment payment",
+            "Proof of payment",
+            "Others"
+        ]
+    },
+    {
+        "section": "Billing Invoice",
+        "list": [
+            "Billing invoice sending",
+            "Official Receipt",
+            "Adjustment of invoice",
+            "Accountability",
+            "Others"
+        ]
+    },
+    {
+        "section": "Credit and Collection",
+        "list": [
+            "SOA sending",
+            "SOA reconciliation",
+            "Cargo release (IB)",
+            "Shipment release (OB)",
+            "AR collection",
+            "Others"
+        ]
+    },
+    {
+        "section": "Offsetting from Freight",
+        "list": [
+            "Offset"
+        ]
+    },
+    {
+        "section": "Container Deposit",
+        "list": [
+            "Container deposit refund"
+        ]
+    }
+
+]
