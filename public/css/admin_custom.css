@@ -1,3 +1,20 @@
 .content-wrapper {
     padding: 5px;
 }
+
+.tox-promotion {
+    display: none;
+}
+
+.ticket-header .badge {
+    margin-right: 5px;
+}
+
+.ticket-replies {
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+.ticket-description img {
+    width: 100%;
+}

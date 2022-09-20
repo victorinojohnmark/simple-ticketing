@@ -305,7 +305,7 @@ return [
         ],
         [
             'text' => 'Tickets',
-            'url'  => '#',
+            'url'  => 'tickets',
             'icon' => 'fas fa-fw fa-ticket-alt',
         ],
         [
