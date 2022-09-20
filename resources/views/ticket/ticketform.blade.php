@@ -17,6 +17,7 @@
         <div class="card-body">
             <form action="{{ route('ticketsave') }}" method="post" class="form-row">
                 @csrf
+                {{-- <a href="#" data-widget="control-sidebar">Toggle Control Sidebar</a> --}}
                 <div class="col-md-12">
                     <label for="classification">Classification</label>
                     <div class="row">
@@ -44,8 +45,11 @@
 
                 <div class="col-md-6">
                     <x-adminlte-select name="department_id" label="Department">
-                        <option>Select here...</option>
-                        <option value="1">Customer Service</option>
+                        @forelse ($departments as $department)
+                            <option value="{{ $department->id }}">{!! $department->department_name !!}</option>
+                        @empty
+                            <option>Select here...</option>
+                        @endforelse
                     </x-adminlte-select>
                 </div>
 
@@ -54,11 +58,13 @@
                 </div>
                 <div class="col-md-4">
                     <x-adminlte-select name="priority" label="Priority">
-                        <option>Select here...</option>
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                        <option value="Urgent">Urgent</option>
+                        @forelse ($priorities as $priority)
+                            <option value="{{ $priority }}">{{ $priority }}</option>
+                        @empty
+                            <option>Select here...</option> 
+                        @endforelse
+                        
+                        
                     </x-adminlte-select>
                 </div>
                 <div class="col-md-4">
@@ -67,7 +73,7 @@
 
                 <div class="col-md-12 mb-3">
                     <label for="ticketTinyMCE">Description</label>
-                    <textarea id="ticketTinyMCE" name="description">Hello, World!</textarea>
+                    <textarea id="ticketTinyMCE" name="description"></textarea>
                 </div>
 
                 <div class="col-md-6">
@@ -80,6 +86,10 @@
             </form>
         </div>
     </div>
+
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
 @stop
 
 @section('css')
@@ -88,7 +98,9 @@
 @stop
 
 @section('js')
+    <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
     <script src="{{ asset('js/ticket-tinymce.js') }}"></script>
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    
+    <script>$("#my-toggle-button").ControlSidebar('toggle');</script>
 @stop

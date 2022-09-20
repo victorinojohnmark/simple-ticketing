@@ -18,19 +18,22 @@
             <div class="ticket-header p-3 border-bottom">
                 <div class="row">
                     <div class="col">
-                        <h6 class="d-inline-block mr-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel asperiores quas mollitia repudiandae atque! Culpa.</h6>
+                        <h6 class="d-inline-block mr-1"><strong>{!! $ticket->subject !!}</strong> <span class="badge badge-secondary">{!! $ticket->bl_no !!}</span></h6><br>
+                        <span class="badge badge-primary mb-2">Customer Service</span>
+                        <span class="badge badge-primary mb-2">{!! $ticket->classification_header .' > '. $ticket->classification_desc !!}</span>
+                        <span class="badge badge-info mb-2">Open</span>
+                        <span class="badge badge-light mb-2">Low</span>
                     </div>
                     <div class="col-6">
                         <div class="float-right text-right">
-                            <span class="badge badge-primary mb-2">Customer Service</span>
-                            <span class="badge badge-primary mb-2">{!! $ticket->classification_header .' > '. $ticket->classification_desc !!}</span>
-                            <span class="badge badge-info mb-2">Open</span>
-                            <span class="badge badge-light mb-2">Low</span>
-                            <button class="btn btn-default btn-sm"><i class="fas fa-reply"></i> Reply</button>
+                            
+
+                            @include('ticketreply.ticketreplymodal')
+                            
                         </div>
                     </div>
                 </div>
-                <span class="badge badge-secondary">{!! $ticket->bl_no !!}</span>
+                
             </div>
             <div class="row">
                 <div class="col-md-5">
@@ -39,53 +42,7 @@
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <div class="ticket-replies">
-                        <ul class="list-group rounded-0 border-0">
-                            <li class="ticket-replies-item list-group-item list-group-item-action p-3 border-top-0">
-                                <p class="d-inline-block"><img src="https://via.placeholder.com/25" alt="image" class="img-fluid rounded-circle"> John Doe</p>
-                                <span class="float-right">
-                                    <small>2022-09-20 08:35 am</small>
-                                </span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus explicabo aut quas eius quis omnis, dignissimos impedit cum ipsam adipisci alias nostrum pariatur vel id, vero sapiente tempora est reiciendis?</p>
-                            </li>
-                            <li class="ticket-replies-item list-group-item list-group-item-action p-3">
-                                <p class="d-inline-block"><img src="https://via.placeholder.com/25" alt="image" class="img-fluid rounded-circle"> Sarah Lee</p>
-                                <span class="float-right">
-                                    <small>2022-09-20 08:35 am</small>
-                                </span>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus aliquam iste nobis debitis earum consectetur.</p>
-                            </li>
-                            <li class="ticket-replies-item list-group-item list-group-item-action p-3 border-bottom-0">
-                                <p class="d-inline-block"><img src="https://via.placeholder.com/25" alt="image" class="img-fluid rounded-circle"> Erick Smith</p>
-                                <span class="float-right">
-                                    <small>2022-09-20 08:35 am</small>
-                                </span>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit non magni quam modi perspiciatis. Id magnam ea aliquid deleniti reprehenderit iure nulla assumenda necessitatibus ipsam.</p>
-                            </li>
-                            <li class="ticket-replies-item list-group-item list-group-item-action p-3 border-top-0">
-                                <p class="d-inline-block"><img src="https://via.placeholder.com/25" alt="image" class="img-fluid rounded-circle"> John Doe</p>
-                                <span class="float-right">
-                                    <small>2022-09-20 08:35 am</small>
-                                </span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus explicabo aut quas eius quis omnis, dignissimos impedit cum ipsam adipisci alias nostrum pariatur vel id, vero sapiente tempora est reiciendis?</p>
-                            </li>
-                            <li class="ticket-replies-item list-group-item list-group-item-action p-3">
-                                <p class="d-inline-block"><img src="https://via.placeholder.com/25" alt="image" class="img-fluid rounded-circle"> Sarah Lee</p>
-                                <span class="float-right">
-                                    <small>2022-09-20 08:35 am</small>
-                                </span>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus aliquam iste nobis debitis earum consectetur.</p>
-                            </li>
-                            <li class="ticket-replies-item list-group-item list-group-item-action p-3 border-bottom-0">
-                                <p class="d-inline-block"><img src="https://via.placeholder.com/25" alt="image" class="img-fluid rounded-circle"> Erick Smith</p>
-                                <span class="float-right">
-                                    <small>2022-09-20 08:35 am</small>
-                                </span>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit non magni quam modi perspiciatis. Id magnam ea aliquid deleniti reprehenderit iure nulla assumenda necessitatibus ipsam.</p>
-                            </li>
-                            
-                          </ul>
-                    </div>
+                    @include('ticketreply.ticketreplylist')
                 </div>
             </div>
         </div>

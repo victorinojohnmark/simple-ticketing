@@ -6,6 +6,10 @@
     display: none;
 }
 
+.tox-statusbar__branding {
+    display: none;
+}
+
 .ticket-header .badge {
     margin-right: 5px;
 }
@@ -17,4 +21,8 @@
 
 .ticket-description img {
     width: 100%;
+}
+
+#ticketReplyModal .tox-tinymce {
+    border-radius: 0px !important;
 }

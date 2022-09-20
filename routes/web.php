@@ -26,6 +26,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('tickets', 'TicketController@ticketview')->name('ticketview');
     Route::get('tickets/create', 'TicketController@ticketcreate')->name('ticketcreate');
     Route::post('tickets/save', 'TicketController@ticketsave')->name('ticketsave');
+
+    //Ticket Replies
+    Route::post('ticketreply/save', 'TicketReplyController@ticketreplysave')->name('ticketreplysave');
+
     
 });
 

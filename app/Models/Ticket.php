@@ -14,5 +14,10 @@ class Ticket extends Model
         'department_id', 'bl_no', 'priority', 'expected_date_accomplished', 'description'
     ];
 
+    public function ticketReplies()
+    {
+        return $this->hasMany(TicketReply::class);
+    }
+
 
 }

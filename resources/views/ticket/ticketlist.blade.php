@@ -46,7 +46,9 @@
                     </td>
                   </tr>
                   @empty
-                      
+                      <tr>
+                        <td colspan="5">No ticket/s record available</td>
+                      </tr>
                   @endforelse
                   
                 </tbody>

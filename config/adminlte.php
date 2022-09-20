@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => '/img/icon.png',
             'alt' => 'Simple Ticketing Image',
