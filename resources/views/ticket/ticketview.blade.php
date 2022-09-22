@@ -20,14 +20,13 @@
                     <div class="col">
                         <h6 class="d-inline-block mr-1"><strong>{!! $ticket->subject !!}</strong> <span class="badge badge-secondary">{!! $ticket->bl_no !!}</span></h6><br>
                         <span class="badge badge-primary mb-2">Customer Service</span>
-                        <span class="badge badge-primary mb-2">{!! $ticket->classification_header .' > '. $ticket->classification_desc !!}</span>
+                        <span class="badge badge-primary mb-2">{!! $ticket->classification !!}</span>
                        {!! $ticket->statusBadge !!}
                         <span class="badge badge-light mb-2">Low</span>
                     </div>
                     <div class="col-6">
                         <div class="float-right text-right">
                             
-
                             @include('ticketreply.ticketreplymodal')
                             
                         </div>

@@ -134,10 +134,10 @@
     var jsTree = $('#js_tree').jstree();
 
     jsTree.on('changed.jstree', function(e, data) {
-        console.log();
         
         $('input[name="classification"]').val(data.instance.get_path(data.instance.get_selected(), ' > ').replace(/\s+/g, ' ').trim());
-
+        // $('#modalJSTree').modal('hide');
+        $("#modalJSTree .close").click();
     });
     
     </script>

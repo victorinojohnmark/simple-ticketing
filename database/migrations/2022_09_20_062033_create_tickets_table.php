@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->unsignedMediumInteger('created_by_id');
-            $table->string('classification_header', 50);
-            $table->string('classification_desc', 50);
+            $table->text('classification');
             $table->string('subject', 255);
             $table->unsignedMediumInteger('department_id');
             $table->string('bl_no');
