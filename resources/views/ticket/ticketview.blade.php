@@ -21,7 +21,7 @@
                         <h6 class="d-inline-block mr-1"><strong>{!! $ticket->subject !!}</strong> <span class="badge badge-secondary">{!! $ticket->bl_no !!}</span></h6><br>
                         <span class="badge badge-primary mb-2">Customer Service</span>
                         <span class="badge badge-primary mb-2">{!! $ticket->classification_header .' > '. $ticket->classification_desc !!}</span>
-                        <span class="badge badge-info mb-2">Open</span>
+                       {!! $ticket->statusBadge !!}
                         <span class="badge badge-light mb-2">Low</span>
                     </div>
                     <div class="col-6">

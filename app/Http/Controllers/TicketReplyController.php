@@ -20,9 +20,12 @@ class TicketReplyController extends Controller
         $data['created_by_id'] = Auth::id();
 
         //temporarily remove until ticket status change feature available
-        unset($data['ticket_status']);
+        // unset($data['ticket_status']);
 
-        TicketReply::create($data);
+        //create data
+        $ticketReply = TicketReply::create($data);
+
+        $ticketReply->ticket->updateStatus($data['ticket_status']);
 
         return redirect()->route('ticketview', ['id' => $request->ticket_id])->with('success', 'Reply created.');
     }   

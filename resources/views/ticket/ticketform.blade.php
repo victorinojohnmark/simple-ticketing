@@ -20,7 +20,7 @@
                 {{-- <a href="#" data-widget="control-sidebar">Toggle Control Sidebar</a> --}}
                 <div class="col-md-12">
                     <label for="classification">Classification</label>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col">
                             <x-adminlte-select name="classification_header">
                                 <option>Select here...</option>
@@ -36,7 +36,31 @@
                                 <option value="Others">Others</option>
                             </x-adminlte-select>
                         </div>
-                    </div>
+                    </div> --}}
+                    <div class="input-group mb-3">
+                        <input type="text" name="classification" class="form-control" placeholder="..." value="" readonly>
+                        <div class="input-group-append">
+                            <x-adminlte-modal id="modalJSTree" title="Ticket Classification" static-backdrop scrollable>
+                                <div id="js_tree" class="rounded bg-light p-3">
+                                    <ul>
+                                        @foreach ($classifications as $classification)
+                                            <li>
+                                                {!! $classification['section'] !!}
+                                                @if (count($classification['list']))
+                                                <ul>
+                                                        @foreach ($classification['list'] as $list)
+                                                            <li>{!! $list !!}</li>
+                                                        @endforeach
+                                                </ul>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </x-adminlte-modal>
+                            <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#modalJSTree"><i class="fas fa-cogs"></i></button>
+                        </div>
+                      </div>
                 </div>
 
                 <div class="col-md-6">
@@ -93,14 +117,28 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/jstree/dist/themes/default/style.min.css') }}" />
+    <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
     <script src="{{ asset('js/ticket-tinymce.js') }}"></script>
+    <script src="{{ asset('vendor/jstree/dist/jstree.min.js') }}"></script>
     
-    <script>$("#my-toggle-button").ControlSidebar('toggle');</script>
+    <script>
+    $("#my-toggle-button").ControlSidebar('toggle');
+    var jsTree = $('#js_tree').jstree();
+
+    jsTree.on('changed.jstree', function(e, data) {
+        console.log();
+        
+        $('input[name="classification"]').val(data.instance.get_path(data.instance.get_selected(), ' > ').replace(/\s+/g, ' ').trim());
+
+    });
+    
+    </script>
 @stop

@@ -25,9 +25,11 @@
               </div>
               <div class="d-flex">
                 <select name="ticket_status" class="custom-select rounded-0 border-top-0 border-bottom-0">
-                  <option value="Open" selected="">Open</option>
-                  <option value="Pending">Pending</option>
-                  <option value="Closed">Closed</option>
+                  @forelse ($statuses as $status)
+                      <option value="{{ $status }}">{{ $status }}</option>
+                  @empty
+                      <option>Selected here...</option>
+                  @endforelse
                 </select>
                 <div class="input-group-append">
                   <button class="btn btn-primary btn-sm rounded-right" type="submit" style="border-top-left-radius: 0;border-bottom-left-radius: 0;">Submit</button>

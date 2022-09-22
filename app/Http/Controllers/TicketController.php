@@ -16,7 +16,8 @@ class TicketController extends Controller
         if($request->id) {
             return view('ticket.ticketview', [
                 'ticket' => Ticket::findOrFail($request->id),
-                'ticketReplies' => TicketReply::where('ticket_id', $request->id)->get()
+                'ticketReplies' => TicketReply::where('ticket_id', $request->id)->get(),
+                'statuses' => json_decode(Storage::disk('json')->get('statuses.json'), true)
             ]);
         } else {
             return view('ticket.ticketlist', [
@@ -29,6 +30,7 @@ class TicketController extends Controller
     public function ticketcreate(Request $request) {
         return view('ticket.ticketform',[
             'departments' => Department::all(),
+            'classifications' => json_decode(Storage::disk('json')->get('classifications.json'), true),
             'priorities' => json_decode(Storage::disk('json')->get('priorities.json'), true),
             'statuses' => json_decode(Storage::disk('json')->get('statuses.json'), true)
         ]);

@@ -1,7 +1,7 @@
-<div class="ticket-replies border-left">
+<div class="ticket-replies border-left border-right">
     <ul class="list-group rounded-0 border-0 h-100">
         @forelse ($ticketReplies as $ticketReply)
-        <li class="ticket-replies-item list-group-item list-group-item-action p-3 border-top-0 border-left-0">
+        <li class="ticket-replies-item list-group-item list-group-item-action p-3 border-top-0 border-left-0 border-right-0">
             <div class="d-flex justify-content-between">
                 <div class="d-flex">
                     <img src="https://via.placeholder.com/25" alt="image" class="img-fluid rounded-circle mr-1" style="width:25px;height:25px;">

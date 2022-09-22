@@ -35,8 +35,7 @@
                         </div>
 
                         <div class="float-right">
-                            <strong>Open</strong>
-                            <p class="text-secondary mb-0">{{ $ticket->priority }}</p>
+                            <strong>{!! $ticket->statusBadge !!} {!! $ticket->priorityBadge !!}</strong>
                         </div>
                     </td>
                     <td>Mark Sanchez</td>
