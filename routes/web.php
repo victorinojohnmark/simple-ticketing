@@ -30,6 +30,9 @@ Route::group(['middleware' => ['auth']], function() {
     //Ticket Replies
     Route::post('ticketreply/save', 'TicketReplyController@ticketreplysave')->name('ticketreplysave');
 
+    //File Attachments
+    Route::post('fileattachment/save', 'FileAttachmentController@uploadfile')->name('uploadfile');
+
     
 });
 

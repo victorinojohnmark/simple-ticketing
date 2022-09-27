@@ -43,7 +43,7 @@
                 <div class="col-md-7">
                     @include('ticketreply.ticketreplylist')
                 </div>
-            </div>
+0            </div>
         </div>
     </div>
 @stop

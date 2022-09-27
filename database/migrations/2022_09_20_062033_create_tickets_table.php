@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('priority');
             $table->date('expected_date_accomplished');
             $table->text('description');
+            $table->json('file_attachments');
             $table->string('status', 20)->default('Open');
             $table->timestamps();
         });

@@ -15,7 +15,7 @@
     @include('layouts.errors')
     <div class="card shadow-sm rounded-0">
         <div class="card-body">
-            <form action="{{ route('ticketsave') }}" method="post" class="form-row">
+            <form action="{{ route('ticketsave') }}" method="post" class="form-row" >
                 @csrf
                 {{-- <a href="#" data-widget="control-sidebar">Toggle Control Sidebar</a> --}}
                 <div class="col-md-12">
@@ -95,16 +95,18 @@
                     <x-adminlte-input name="expected_date_accomplished" type="date" placeholder="..." label="Expected date to accomplished"/>
                 </div>
 
-                <div class="col-md-12 mb-3">
+                <div class="col-md-8 mb-3">
                     <label for="ticketTinyMCE">Description</label>
                     <textarea id="ticketTinyMCE" name="description"></textarea>
                 </div>
 
-                <div class="col-md-6">
-
+                <div class="col-md-4">
+                    <label for="fileAttachment">File Attachment</label>
+                    <input type="file" id="fileAttachment" multiple allow-remove="false">
+                    <input type="hidden" name="files">
                 </div>
 
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
@@ -120,25 +122,26 @@
     
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/jstree/dist/themes/default/style.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/filepond/filepond.min.css') }}">
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')
     <script src="{{ mix('js/app.js') }}" defer></script>
+
     <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
     <script src="{{ asset('js/ticket-tinymce.js') }}"></script>
+
     <script src="{{ asset('vendor/jstree/dist/jstree.min.js') }}"></script>
+    <script src="{{ asset('js/jstree.js') }}"></script>
+
+    <script src="{{ asset('vendor/filepond/filepond.min.js') }}"></script>
+    <script src="{{ asset('js/fileattachment.js') }}"></script>
+    
     
     <script>
     $("#my-toggle-button").ControlSidebar('toggle');
-    var jsTree = $('#js_tree').jstree();
-
-    jsTree.on('changed.jstree', function(e, data) {
-        
-        $('input[name="classification"]').val(data.instance.get_path(data.instance.get_selected(), ' > ').replace(/\s+/g, ' ').trim());
-        // $('#modalJSTree').modal('hide');
-        $("#modalJSTree .close").click();
-    });
+    
     
     </script>
 @stop

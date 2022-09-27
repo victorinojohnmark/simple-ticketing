@@ -14,6 +14,10 @@ class Ticket extends Model
         'department_id', 'bl_no', 'priority', 'expected_date_accomplished', 'description'
     ];
 
+    protected $cast = [
+        'file_attachments' => 'array'
+    ];
+
     //RELATIONSHIPS
     public function ticketReplies()
     {
