@@ -15,28 +15,11 @@
     @include('layouts.errors')
     <div class="card shadow-sm rounded-0">
         <div class="card-body">
-            <form action="{{ route('ticketsave') }}" method="post" class="form-row" >
+            <form action="{{ route('ticketsave') }}" method="post" class="form-row" enctype="multipart/form-data">
                 @csrf
                 {{-- <a href="#" data-widget="control-sidebar">Toggle Control Sidebar</a> --}}
                 <div class="col-md-12">
                     <label for="classification">Classification</label>
-                    {{-- <div class="row">
-                        <div class="col">
-                            <x-adminlte-select name="classification_header">
-                                <option>Select here...</option>
-                                <option value="Fund Management">Fund Management</option>
-                            </x-adminlte-select>
-                        </div>
-                        <div class="col">
-                            <x-adminlte-select name="classification_desc">
-                                <option>Select here...</option>
-                                <option value="Fund matching">Fund matching</option>
-                                <option value="Assignment payment">Assignment payment</option>
-                                <option value="Proof of payment">Proof of payment</option>
-                                <option value="Others">Others</option>
-                            </x-adminlte-select>
-                        </div>
-                    </div> --}}
                     <div class="input-group mb-3">
                         <input type="text" name="classification" class="form-control" placeholder="..." value="" readonly>
                         <div class="input-group-append">
@@ -101,9 +84,11 @@
                 </div>
 
                 <div class="col-md-4">
-                    <label for="fileAttachment">File Attachment</label>
-                    <input type="file" id="fileAttachment" multiple allow-remove="false">
-                    <input type="hidden" name="files">
+                    <div class="p-2 bg-light rounded">
+                        <label for="fileAttachment">File Attachment</label>
+                        <input type="file" id="fileAttachment" name="fileAttachment" multiple allow-remove="false">
+                        <input type="hidden" name="fileid">
+                        </div>
                 </div>
 
                 <div class="col-md-4">
@@ -123,7 +108,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/jstree/dist/themes/default/style.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/filepond/filepond.min.css') }}">
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
 @stop
 
 @section('js')
@@ -137,11 +122,4 @@
 
     <script src="{{ asset('vendor/filepond/filepond.min.js') }}"></script>
     <script src="{{ asset('js/fileattachment.js') }}"></script>
-    
-    
-    <script>
-    $("#my-toggle-button").ControlSidebar('toggle');
-    
-    
-    </script>
 @stop

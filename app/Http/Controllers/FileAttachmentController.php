@@ -16,18 +16,23 @@ class FileAttachmentController extends Controller
             $fileExtension = $file->guessExtension();
             $customFilename = uniqid() . now()->timestamp . '.' . $fileExtension;
 
-            $request['orig_filename'] = $filename;
-            $request['filename'] = $customFilename;
 
-            dd($request->all());
-            $fileattachment = FileAttachment::create($request);
+            $fileattachment = FileAttachment::create([
+                'orig_filename' => $filename,
+                'filename' => $customFilename
+            ]);
 
-            // if($fileattachment) {
-            //     $file->storeAs('public/fileattachment/', $customFilename);
-                
-            // }
+            if($fileattachment) {
+                $file->storeAs('file_attachments/', $customFilename);
 
-            // return $fileattachment;
+            return $fileattachment;
+
+            } else {
+                return response(['error' => true, 'error-msg' => 'File attachment fail saving'], 404);
+            }
+
+            
+
         }
     }
 }

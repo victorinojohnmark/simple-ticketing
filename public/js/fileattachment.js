@@ -1,25 +1,26 @@
 //filepond
 const fileInput = document.querySelector('input[id="fileAttachment"]');
+const fileIDInput = document.querySelector('input[name="fileid"]');
 
-console.log(fileInput);
+
 if(fileInput) {
-    
     const pond = FilePond.create(fileInput, {
         server: {
-            url: `/fileattachment/save`,
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+            url: '/fileattachment/save',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             process: {
-                onload: (res) => {
-                    let file = JSON.parse(res);
-                    
-                    // console.log(res);
+                    onload: (res) => {
+                        let file = JSON.parse(res);
+                        
+                        fileIDInput.value = fileIDInput.value ? fileIDInput.value + ',' + file.id : file.id;
                 }
             },
-            
-        },
-        allowRevert: false,
 
+        }
     });
+    // FilePond.setOptions();
 
     // const pond = FilePond.create( fileInput, {
     //     server: {
